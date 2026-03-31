@@ -1,0 +1,12 @@
+# Database files
+/data/off_ca_emd.db
+/data/off_ca.db
+/data/*.wal
+
+
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc

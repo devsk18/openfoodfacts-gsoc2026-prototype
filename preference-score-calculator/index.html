@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OFF Preference Score</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <h3 class="mt-3 text-left px-5 mx-5">OFF Preference Score Prototype</h3>
+
+    <div class="container mt-3">
+        <div class="row mb-5">
+            <section class="col-6">
+                <h5 class="mb-3">Enter a Barcode</h5>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="barcode" required>
+                </div>
+                <button type="button" class="btn btn-primary">Fetch</button>
+            </section>
+
+            <section class="col-6">
+                <h5 class="mb-3">Preference Score</h5>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p>Score: <span id="score">0</span>/100</p>
+                        <p>Category: <span id="category">Unknown</span></p>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5>Preference Settings</h5>
+                    <button type="button" class="btn btn-primary" onclick="updatePreferenceTable()">Update</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Importance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Good Nutri-Score</td>
+                            <td><select class="form-select form-select-sm" id="nutriscore">
+                                    <option value="not_important">Not important</option>
+                                    <option value="important">Important</option>
+                                    <option value="very_important">Very important</option>
+                                    <option value="mandatory">Mandatory</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Low Food Processing</td>
+                            <td><select class="form-select form-select-sm" id="nova">
+                                    <option value="not_important">Not important</option>
+                                    <option value="important">Important</option>
+                                    <option value="very_important">Very important</option>
+                                    <option value="mandatory">Mandatory</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Low Environment Impact</td>
+                            <td><select class="form-select form-select-sm" id="ecoscore">
+                                    <option value="not_important">Not important</option>
+                                    <option value="important">Important</option>
+                                    <option value="very_important">Very important</option>
+                                    <option value="mandatory">Mandatory</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Low Salt</td>
+                            <td><select class="form-select form-select-sm" id="low_salt">
+                                    <option value="not_important">Not important</option>
+                                    <option value="important">Important</option>
+                                    <option value="very_important">Very important</option>
+                                    <option value="mandatory">Mandatory</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Low Sugar</td>
+                            <td><select class="form-select form-select-sm" id="low_sugars">
+                                    <option value="not_important">Not important</option>
+                                    <option value="important">Important</option>
+                                    <option value="very_important">Very important</option>
+                                    <option value="mandatory">Mandatory</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Low Saturated Fat</td>
+                            <td><select class="form-select form-select-sm" id="low_saturated_fat">
+                                    <option value="not_important">Not important</option>
+                                    <option value="important">Important</option>
+                                    <option value="very_important">Very important</option>
+                                    <option value="mandatory">Mandatory</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Low Fat</td>
+                            <td><select class="form-select form-select-sm" id="low_fat">
+                                    <option value="not_important">Not important</option>
+                                    <option value="important">Important</option>
+                                    <option value="very_important">Very important</option>
+                                    <option value="mandatory">Mandatory</option>
+                                </select></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-3">
+                <h5 class="mb-3">Preference Table</h5>
+                <div class="mb-3" id="preference-table">
+                    
+                </div>
+            </div>
+            <div class="col-3">
+                <h5 class="mb-3">Product Data</h5>
+                <div class="mb-3" id="product-data">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="api.js"></script>
+    <script src="preference-calculator.js"></script>
+
+    <script>
+        let parsedData = null;
+
+        window.onload = function() {
+            updatePreferenceTable();
+        };
+
+        document.querySelector("button").addEventListener("click", async () => {
+            const barcode = document.getElementById("barcode").value.trim();
+            if (!barcode) return;
+
+            parsedData = await fetchData(barcode);
+            updateScore();
+            updateProductData();
+        });
+
+        function updateScore() {
+            const { score, percentage, compatible } = calculateScore(parsedData);
+            const label = getPreferenceLabel(percentage, compatible);
+
+            document.getElementById("score").textContent = percentage;
+            document.getElementById("category").textContent = label;
+            document.querySelector(".progress-bar").style.width = `${percentage}%`;
+        }
+        
+        function updateProductData() {
+            const element = document.getElementById("product-data");
+            element.innerHTML = "";
+
+            let content = "";
+            for (const group of Object.values(parsedData)) {
+              for (const attr of group) {
+                content += `\n${attr.id}: ${attr.grade}`;
+              }
+            }
+            const pre = document.createElement("pre");
+            pre.textContent = content;
+            element.appendChild(pre);
+        }
+
+        function updatePreferenceTable(table) {
+            buildPreferenceTable();
+            
+            const element = document.getElementById("preference-table");
+            element.innerHTML = "";
+
+            // preference table
+            const tableData = JSON.parse(localStorage.getItem("preferenceTable"));
+            let content = "";
+            for (const [attrId, factor] of Object.entries(tableData)) {
+              content += `\n${attrId}: ${factor}`;
+            }
+            const pre = document.createElement("pre");
+            pre.textContent = content;
+
+            // max score
+            const maxScore = localStorage.getItem("maxScore");
+            pre.textContent += `\n\nmax score: ${maxScore}`;
+            element.appendChild(pre);
+
+            if (parsedData) {
+                updateScore();
+            }
+        }
+    </script>
+
+</body>
+
+</html>
