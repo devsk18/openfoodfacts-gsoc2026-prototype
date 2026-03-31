@@ -4,8 +4,8 @@ A WXT-based browser extension that intercepts and logs specific API calls from w
  
 ---
  
-## Demo
-<video src="../demos/videos/request-interceptor-demo.mp4" controls></video>
+## Request Interceptor Demo
+<video src="https://github.com/user-attachments/assets/8e81ef2c-4c6a-4565-8ad1-ce1299074566" controls></video>
 
 ---
  

@@ -3,7 +3,7 @@
 A web application that calculates preference scores for food products based on nutritional quality, processing level, and environmental impact. This prototype helps us understand how OFF Preference search works.
 
 ## Demo
-<video src="../demos/videos/preference-score-demo.mp4" controls></video>
+<video src="https://github.com/user-attachments/assets/84b05a82-c926-465a-a642-7ffba04fedf3" controls></video>
 
 ## Data Sources
 The application uses the `attribute_groups` field from the Open Food Facts Product API to retrieve:

@@ -19,7 +19,7 @@ Currently supports **metro.ca** with an extensible adapter system for adding mor
 ---
 
 ## Demo
-<video src="../demos/videos/nutrilens-demo.mp4" controls></video>
+<video src="https://github.com/user-attachments/assets/e5682225-0012-478c-bfcb-2ab23899a765" controls></video>
 
 ## Additional Screenshots
 

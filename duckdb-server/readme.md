@@ -5,7 +5,7 @@
 This API provides endpoints for managing product-store mappings, lookups, and store information for an online grocery extension system. The server uses Flask with DuckDB as the database backend.
 
 ## Demo
-<video src="../demos/videos/duckdb-server-demo.mp4" controls></video>
+<video src="https://github.com/user-attachments/assets/e0662c45-0f8e-44bc-bb03-dc0d466a7e36" controls></video>
 
 ## Base URL
 
