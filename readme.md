@@ -19,6 +19,9 @@ A collection of prototypes for Open Food Facts Project #5 (Online Grocery Extens
 ## NutriLens Demo
 <video src="https://github.com/user-attachments/assets/e5682225-0012-478c-bfcb-2ab23899a765" controls></video>
 
+## Initial Prototype Demo
+<video src="https://github.com/user-attachments/assets/b597372c-2535-4d2b-9477-d45445830318" controls></video>
+
 ## DuckDB Server Demo
 <video src="https://github.com/user-attachments/assets/e0662c45-0f8e-44bc-bb03-dc0d466a7e36" controls></video>
 
