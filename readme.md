@@ -59,3 +59,7 @@ A collection of prototypes for Open Food Facts Project #5 (Online Grocery Extens
 
 ### Popup Window UI 2
 ![Popup Window](demos/images/pop-up-ui-2.png)
+
+### Semantic Search with CLIP
+![CLIP Semantic Search Demo 1](demos/images/image-search-1.png)
+![CLIP Semantic Search Demo 2](demos/images/image-search-2.png)
