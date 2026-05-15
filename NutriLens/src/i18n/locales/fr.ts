@@ -46,6 +46,17 @@ export const fr = {
     product: "Produit",
     searchWarning: "Avertissement de recherche",
     searchWarningList: "Avertissement",
-    searchWarningTitle: "Nous n'avons pas trouvé de correspondance exacte, nous affichons plutôt une correspondance similaire"
-    
+    searchWarningTitle: "Nous n'avons pas trouvé de correspondance exacte, nous affichons plutôt une correspondance similaire",
+  
+    preferenceMatch: "Correspondance de préférence",
+    not_compatible: "Non compatible",
+    unknown_match: "Inconnu",
+    poor_match: "Faible",
+    moderate_match: "Modéré",
+    good_match: "Bon",
+    very_good_match: "Très bon",
+
+    searchMatch: "Confiance de recherche",
+    exact_match: "Correspondance exacte",
+    similar_match: "Correspondance similaire",
 };

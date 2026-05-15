@@ -1,3 +1,4 @@
+import { calculatePreferenceScore } from "../lib/PreferenceScore";
 import { StorageService } from "../services/StorageService";
 import { OFF_API } from "./OFF_API";
 
@@ -14,7 +15,13 @@ export class OFFDataLayer extends OFF_API {
         if (cacheKey) {
             const cachedData = await this.storageService.getCache(cacheKey);
             if (cachedData) {
-                return cachedData;
+                const prefResult = await calculatePreferenceScore(cachedData);
+                return {
+                    ...cachedData,
+                    preferenceScore: prefResult.percentage,
+                    preferenceLabel: prefResult.label,
+                    preferenceColor: prefResult.color,
+                };
             }
         }
 
@@ -23,19 +30,24 @@ export class OFFDataLayer extends OFF_API {
             data = await this.fetchByBarcode(this.request.barcode, this.locale);
         }
 
-        else if (this.request.name) {
+        else if (this.request.query) {
             // move to adapter - bcoz walmart product name is already a combined version 
-            const query = `${this.request.brand} ${this.request.name} ${this.request.size}`.trim();
-            data = await this.fetchBySearch(query, this.locale);  
+            data = await this.fetchBySearch(this.request.query, this.locale);  
         }
 
         if (data && cacheKey) {
             this.storageService.setCache(cacheKey, data);
-            return data;
         }
 
         if (data) {
-            return data;
+            const prefResult = await calculatePreferenceScore(data);
+            console.log(data, prefResult);
+            return {
+                ...data,
+                preferenceScore: prefResult.percentage,
+                preferenceLabel: prefResult.label,
+                preferenceColor: prefResult.color,
+            };
         }
 
         return null;

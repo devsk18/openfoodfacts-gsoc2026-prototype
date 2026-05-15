@@ -11,7 +11,7 @@ export const NotFound = ({ barcode = "" }: { barcode?: string }) => {
     <div class="overflow-hidden rounded-xl border border-gray-200 bg-white text-base shadow-sm mb-6">
       <div class="flex items-center justify-between border-b border-gray-100 bg-gray-100 px-3.5 py-2.5">
         <div class="flex items-center gap-1.5">
-          <div class="flex h-12 w-60 shrink-0 items-center justify-center">
+          <div class="flex h-6 w-32 shrink-0 items-center justify-center">
             <img alt="OFF Light Logo" src={OFF_LOGO.LIGHT} />
           </div>
         </div>

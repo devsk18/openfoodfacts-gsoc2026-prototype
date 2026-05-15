@@ -1,8 +1,8 @@
 import { Adapter } from "../Adapter";
 
-export class MetroAdapter extends Adapter {
-    readonly hostname = "www.metro.ca";
-    readonly sku_prefix = "metro-"; // use store_uuid when duckdb is ready
+export class TestAdapter extends Adapter {
+    readonly hostname = "localhost";
+    readonly sku_prefix = "test-"; // use store_uuid when duckdb is ready
     readonly structure = {
         productView: {
             baseSelector: ".pdpDetailsContainer",
@@ -61,10 +61,9 @@ export class MetroAdapter extends Adapter {
     injectProductBanner(target: Element): Element {
         // decide where to inject the banner in product view
         const host = this.getHostElement();
-        target.before(host);
-        // const tg = this.select('body');
-        // console.log('tg', tg);
-        // tg?.appendChild(host);
+        // target.before(host);
+        const tg = this.select('body');
+        tg?.appendChild(host);
         return this.getShadowRootContainer(host);
     }
 

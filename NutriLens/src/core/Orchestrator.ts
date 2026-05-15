@@ -4,6 +4,8 @@ import { Renderer } from '../components/Renderer';
 import { ListViewBanner } from '../components/ListViewBanner';
 import { defaultSettings, Settings, SettingsService } from '../services/SettingsService';
 import { I18n } from '../i18n/I18n';
+import { HoverBannerWrapper } from '../components/CompactModalBanner/HoverBannerWrapper';
+import { buildPreferenceTable } from '../lib/PreferenceScore';
 
 const PROCESSED_ATTR = 'data-off-processed';
 
@@ -25,6 +27,7 @@ export class Orchestrator {
     private async syncSettings() {
         const settings = await SettingsService.init();
         this.settings = settings;
+        await buildPreferenceTable(settings.preferences);
     }
 
     render() {
@@ -49,7 +52,7 @@ export class Orchestrator {
             
             const productData = this.adapter.getProductDataFromProductView(productElement);
             const container = this.adapter.injectProductBanner(productElement);
-            Renderer.mount(ProductViewBanner, container, { data: productData });
+            Renderer.mount(HoverBannerWrapper, container, { data: productData });
             this.renderedElements.set(productElement, container);
         }
     }
@@ -64,7 +67,7 @@ export class Orchestrator {
                     this.markProcessed(listElement);
                     const listProductData = this.adapter.getProductDataFromListItem(listElement);
                     const container = this.adapter.injectListBanner(listElement);
-                    Renderer.mount(ListViewBanner, container, { data: listProductData });
+                    Renderer.mount(HoverBannerWrapper, container, { data: listProductData });
                     this.renderedElements.set(listElement, container);
                 } else {
                     this.observeElement(listElement);
@@ -119,7 +122,7 @@ export class Orchestrator {
                     if (!container) return;
                     
                     const listProductData = this.adapter.getProductDataFromListItem(element);
-                    Renderer.mount(ListViewBanner, container, { data: listProductData });
+                    Renderer.mount(HoverBannerWrapper, container, { data: listProductData });
                     this.renderedElements.set(element, container);
                     
                     observer.disconnect();

@@ -3,7 +3,7 @@
 
 const OFF_STATIC = 'https://static.openfoodfacts.org/images/attributes/dist';
 
-const VALID_GRADES = ['a', 'b', 'c', 'd', 'e'];
+const VALID_GRADES = ['a-plus', 'a', 'b', 'c', 'd', 'e'];
 const VALID_NOVA   = ['1', '2', '3', '4'];
 
 export const OFF_ICONS = {

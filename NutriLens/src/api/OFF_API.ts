@@ -1,21 +1,38 @@
 export class OFF_API {
   private readonly API_USER_AGENT = "NutriLens/1.0";
-  private readonly OFF_API_BASE = "https://world.openfoodfacts.org/api/v3";
+  private readonly OFF_API_BASE = "https://world.openfoodfacts.org/api/v2";
   private readonly OFF_SEARCH_BASE = "https://search.openfoodfacts.org";
   private readonly OFF_PRODUCT_ENDPOINT = `${this.OFF_API_BASE}/product`;
+  private readonly PRODUCT_FIELDS = [
+    "code",
+    "nutrient_levels",
+    "nutriscore_grade",
+    "nova_group",
+    "ecoscore_grade",
+    "product_name",
+    "image_front_small_url",
+    "brands",
+    "product_quantity",
+    "product_quantity_unit",
+  ];
 
   async fetchByBarcode(barcode: string, locale: string) {
     try {
       const url = new URL(`${this.OFF_PRODUCT_ENDPOINT}/${barcode}.json`);
       const searchParams = new URLSearchParams({
         lc: locale,
-        fields: ["code", "nutrient_levels", "nutriscore_grade", "nova_group", "ecoscore_grade", "product_name"].join(","),
+        fields: this.PRODUCT_FIELDS.join(","),
       });
       url.search = searchParams.toString();
 
       const response = await fetch(url, {
         headers: { "User-Agent": this.API_USER_AGENT },
       });
+
+      if (!response.ok) {
+        console.error("Error fetching product by barcode - " + barcode + " : " + response.statusText);
+        return null;
+      }
 
       const data = await response.json();
 
@@ -36,7 +53,7 @@ export class OFF_API {
       const searchParams = new URLSearchParams({
         q: query,
         page_size: "1",
-        fields: ["code", "nutrient_levels", "nutriscore_grade", "nova_group", "ecoscore_grade", "product_name"].join(","),
+        fields: this.PRODUCT_FIELDS.join(","),
         lc: locale,
       });
       url.search = searchParams.toString();
@@ -76,7 +93,11 @@ export class OFF_API {
         salt: data.nutrient_levels?.salt || "unknown",
       },
       showSearchWarning: isSerachApi,
-      productName: data.product_name || ""
+      productName: data.product_name || "",
+      brand: data.brands || "",
+      image: data.image_front_small_url || "",
+      productQuantity: data.product_quantity || "",
+      productQuantityUnit: data.product_quantity_unit || "",
     };
   }
 }

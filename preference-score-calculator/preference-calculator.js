@@ -6,6 +6,7 @@ const IMPORTANCE_FACTOR = {
 };
 
 const GRADE_SCORE = {
+  'a-plus': 2,
   a: 2,
   b: 1,
   c: 0,

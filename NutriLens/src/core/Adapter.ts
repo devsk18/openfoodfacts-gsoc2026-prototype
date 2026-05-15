@@ -33,7 +33,7 @@ export abstract class Adapter {
 
     // Element retrieval methods
     abstract getListItemElements(): Element[];
-    abstract getProductItemElement(): Element;
+    abstract getProductItemElement(): Element | null;
 
     // Banner injection methods
     abstract injectProductBanner(element: Element): Element;
@@ -46,6 +46,7 @@ export abstract class Adapter {
     protected getHostElement(): Element {
         const host = document.createElement('div');
         host.dataset.offBannerProcessed = 'true';
+        host.style.cssText = 'position:relative; z-index:2;';
         return host;
     }
 
@@ -57,5 +58,18 @@ export abstract class Adapter {
         shadowRoot.appendChild(container);
 
         return container;
+    }
+
+    protected select(selector: string, target?: Element): Element | null {
+        return (target || document).querySelector(selector);
+    }
+
+    protected selectAll(selector: string, target?: Element): Element[] {
+        return Array.from((target || document).querySelectorAll(selector));
+    }
+
+    protected selectXPath(xpath: string, target?: Element): Element | null {
+        const result = document.evaluate(xpath, target || document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+        return result.singleNodeValue as Element | null;
     }
 }

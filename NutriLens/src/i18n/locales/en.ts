@@ -45,5 +45,39 @@ export const en = {
     product: "Product",
     searchWarning: "search warning",
     searchWarningList: "Warning",
-    searchWarningTitle: "We couldn't find exact match, instead showing similar match"
+    searchWarningTitle: "We couldn't find exact match, instead showing similar match",
+
+    notFoundTitle: "No match found",
+    notFoundDescription: "This product isn't in the Open Food Facts database yet. You can help by adding it.",
+    contributeToOFF: "Add to Open Food Facts",
+
+    nutriscore_a_short: "Very good nutritional quality",
+    nutriscore_b_short: "Good nutritional quality",
+    nutriscore_c_short: "Average nutritional quality",
+    nutriscore_d_short: "Poor nutritional quality",
+    nutriscore_e_short: "Bad nutritional quality",
+
+    novascore_1_short: "Unprocessed or minimally processed",
+    novascore_2_short: "Processed culinary ingredients",
+    novascore_3_short: "Processed foods",
+    novascore_4_short: "Ultra processed foods",
+
+    ecoscore_a_plus_short: "Very low environmental impact",
+    ecoscore_a_short: "Very low environmental impact",
+    ecoscore_b_short: "Low environmental impact",
+    ecoscore_c_short: "Moderate environmental impact",
+    ecoscore_d_short: "High environmental impact",
+    ecoscore_e_short: "Very high environmental impact",
+
+    preferenceMatch: "Preference Match",
+    not_compatible: "Not compatible",
+    unknown_match: "Unknown match",
+    poor_match: "Poor match",
+    moderate_match: "Moderate match",
+    good_match: "Good match",
+    very_good_match: "Very good match",
+
+    searchMatch: "Search Confidence",
+    exact_match: "Exact match",
+    similar_match: "Similar match",
 };

@@ -2,10 +2,9 @@ import { I18n } from '../src/i18n/I18n';
 import { AdapterRegistry } from "@/src/core/AdapterRegistry";
 import { Orchestrator } from "@/src/core/Orchestrator";
 import "@/src/core/Register";
-import { SettingsService } from "@/src/services/SettingsService";
 
 export default defineContentScript({
-  matches: ['*://*.metro.ca/*'],
+  matches: ['*://*.metro.ca/*', '*://*.walmart.ca/*', '*://localhost/*'],
   runAt: 'document_idle',
   async main(ctx) {
     const adapter = AdapterRegistry.resolve(window.location.hostname);
