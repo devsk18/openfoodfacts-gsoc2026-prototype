@@ -35,48 +35,11 @@ A collection of prototypes for Open Food Facts Project #5 (Online Grocery Extens
 ### Product View
 ![Product View](demos/images/nutrilensv2-product-view.png)
 
-### Product Listing
-![Product Listing](demos/images/nutrilensv2-list-view.png)
+### Product List View
+![Product List View](demos/images/nutrilensv2-list-view.png)
 
 ### Popup View
 ![Popup](demos/images/nutrilensv2-popup-view.png)
-
-## NutriLens V1
-
-### Demo Video
-<video src="https://github.com/user-attachments/assets/e5682225-0012-478c-bfcb-2ab23899a765" controls></video>
-
-### List Banner Loading
-![List Banner Loading](demos/images/list-banner-loading.png)
-
-### List Banner Not Found
-![List Banner Not Found](demos/images/list-banner-not-found.png)
-
-### List Banner Results
-![List Banner Results](demos/images/list-banner-results.png)
-
-### List Banner Search Warning
-![List Banner Search Warning](demos/images/list-banner-search-warning.png)
-
-### Product Banner Not Found
-![Product Banner Not Found](demos/images/product-banner-not-found.png)
-
-### Product Banner Search Warning 1
-![Product Banner Search Warning 1](demos/images/product-banner-search-warning-1.png)
-
-### Product Banner Search Warning 2
-![Product Banner Search Warning 2](demos/images/product-banner-search-warning-2.png)
-
-### Popup Window UI 1
-![Popup Window](demos/images/pop-up-ui-1.png)
-
-### Popup Window UI 2
-![Popup Window](demos/images/pop-up-ui-2.png)
-
-## NutriLens V0
-
-### Demo Video
-<video src="https://github.com/user-attachments/assets/1a849b7c-144e-4396-98fe-7c887590a4be" controls></video>
 
 ### Semantic Search with CLIP
 ![CLIP Semantic Search Demo 1](demos/images/image-search-1.png)
