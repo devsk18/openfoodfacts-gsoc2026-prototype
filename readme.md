@@ -16,11 +16,7 @@ A collection of prototypes for Open Food Facts Project #5 (Online Grocery Extens
 
 # Demo Videos
 
-## NutriLens Demo
-<video src="https://github.com/user-attachments/assets/e5682225-0012-478c-bfcb-2ab23899a765" controls></video>
-
-## Initial Prototype Demo
-<video src="https://github.com/user-attachments/assets/1a849b7c-144e-4396-98fe-7c887590a4be" controls></video>
+## NutriLens V2 Demo
 
 ## DuckDB Server Demo
 <video src="https://github.com/user-attachments/assets/e0662c45-0f8e-44bc-bb03-dc0d466a7e36" controls></video>
@@ -32,6 +28,22 @@ A collection of prototypes for Open Food Facts Project #5 (Online Grocery Extens
 <video src="https://github.com/user-attachments/assets/8e81ef2c-4c6a-4565-8ad1-ce1299074566" controls></video>
 
 ## Additional Screenshots
+
+## NutriLens V2
+
+### Product View
+![Product View](demos/images/nutrilensv2-product-view.png)
+
+### Product Listing
+![Product Listing](demos/images/nutrilensv2-list-view.png)
+
+### Popup View
+![Popup](demos/images/nutrilensv2-popup-view.png)
+
+## NutriLens V1
+
+### Demo Video
+<video src="https://github.com/user-attachments/assets/e5682225-0012-478c-bfcb-2ab23899a765" controls></video>
 
 ### List Banner Loading
 ![List Banner Loading](demos/images/list-banner-loading.png)
@@ -59,6 +71,11 @@ A collection of prototypes for Open Food Facts Project #5 (Online Grocery Extens
 
 ### Popup Window UI 2
 ![Popup Window](demos/images/pop-up-ui-2.png)
+
+## NutriLens V0
+
+### Demo Video
+<video src="https://github.com/user-attachments/assets/1a849b7c-144e-4396-98fe-7c887590a4be" controls></video>
 
 ### Semantic Search with CLIP
 ![CLIP Semantic Search Demo 1](demos/images/image-search-1.png)

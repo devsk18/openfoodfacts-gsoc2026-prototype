@@ -4,7 +4,7 @@ import { Orchestrator } from "@/src/core/Orchestrator";
 import "@/src/core/Register";
 
 export default defineContentScript({
-  matches: ['*://*.metro.ca/*', '*://*.walmart.ca/*', '*://localhost/*'],
+  matches: ['*://*.metro.ca/*', '*://*.walmart.ca/*'],
   runAt: 'document_idle',
   async main(ctx) {
     const adapter = AdapterRegistry.resolve(window.location.hostname);

@@ -1,5 +1,5 @@
 // TODO:: use local svgs
-// attribute_groups share icon links - mimicing same for now 
+// attribute_groups share icon links
 
 const OFF_STATIC = 'https://static.openfoodfacts.org/images/attributes/dist';
 
